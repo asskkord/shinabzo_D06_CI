@@ -23,4 +23,4 @@ test_job:
   stage: test
   script:
     - ./src/part2/cat/tests2.sh
-    - ./src/grep/part2/tests1.sh
+    - ./src/part2/grep/tests1.sh
