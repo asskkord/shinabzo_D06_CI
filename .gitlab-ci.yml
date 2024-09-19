@@ -1,0 +1,13 @@
+stages:
+  - build
+
+build_job:
+  stage: build
+  script:
+    - cd src/part2/cat/ && make && ../
+    - cd grep/ && make && ../../../
+  artifacts:
+    paths:
+      - src/part2/cat/
+      - src/part2/grep/
+    expire_in: 30 days
