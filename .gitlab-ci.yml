@@ -22,5 +22,5 @@ style_job:
 test_job:
   stage: test
   script:
-    - ./src/part2/cat/tests2.sh
-    - ./src/part2/grep/tests1.sh
+    - cd src/part2/cat/ && make test && cd ..
+    - cd grep/ && make test

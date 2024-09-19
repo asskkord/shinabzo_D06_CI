@@ -16,3 +16,6 @@ clean:
 	rm -rf s21_grep
 
 rebuild: clean all
+
+test: s21_grep
+	./tests1.sh

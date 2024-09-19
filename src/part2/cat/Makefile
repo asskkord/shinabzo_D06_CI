@@ -10,3 +10,6 @@ clean:
 	rm -rf s21_cat
 
 rebuild: clean all
+
+test: s21_cat
+	./tests2.sh
