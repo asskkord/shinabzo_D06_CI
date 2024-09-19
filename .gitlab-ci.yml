@@ -4,8 +4,8 @@ stages:
 build_job:
   stage: build
   script:
-    - cd src/part2/cat/ && make && ..
-    - cd grep/ && make && ../../..
+    - cd src/part2/cat/ && make && cd ..
+    - cd grep/ && make && cd ../../..
   artifacts:
     paths:
       - src/part2/cat/
