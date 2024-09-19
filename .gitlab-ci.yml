@@ -1,6 +1,7 @@
 stages:
   - build
   - style
+  - test
 
 build_job:
   stage: build
@@ -17,3 +18,9 @@ style_job:
   stage: style
   script:
     - clang-format -n -style=Google -Werror src/part2/cat/*.c src/part2/grep/*.h src/part2/grep/*.c
+
+test_job:
+  stage: test
+  script:
+    - ./src/cat/tests2.sh
+    - ./src/grep/tests1.sh

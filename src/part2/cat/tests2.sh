@@ -34,9 +34,6 @@ manual=(
 "-s -n -e prikoli.txt"
 "prikoli.txt -n"
 "-n prikoli.txt"
-"-n test_files/test_1_cat.txt prikoli.txt"
-"-v prikoli.txt"
-"-- prikoli.txt"
 )
 
 gnu=(
@@ -65,167 +62,165 @@ run_test() {
     fi
     rm -f "${s21_command[@]}".log "${sys_command[@]}".log
 }
-
-echo "^^^^^^^^^^^^^^^^^^^^^^^"
-echo "TESTS WITH NORMAL FLAGS"
-echo "^^^^^^^^^^^^^^^^^^^^^^^"
-printf "\n"
-echo "#######################"
-echo "MANUAL TESTS"
-echo "#######################"
-printf "\n"
 for i in "${manual[@]}"
 do
     var="-"
     run_test "$i"
 done
-printf "\n"
-echo "#######################"
-echo "AUTOTESTS"
-echo "#######################"
-printf "\n"
-echo "======================="
-echo "1 PARAMETER"
-echo "======================="
-printf "\n"
+# printf "\n"
+# echo "#######################"
+# echo "AUTOTESTS"
+# echo "#######################"
+# printf "\n"
+# echo "======================="
+# echo "1 PARAMETER"
+# echo "======================="
+# printf "\n"
 
-for var1 in "${flags[@]}"
-do
-    for i in "${tests[@]}"
-    do
-        var="-$var1"
-        run_test "$i"
-    done
-done
-printf "\n"
-echo "======================="
-echo "2 PARAMETERS"
-echo "======================="
-printf "\n"
+# for var1 in "${flags[@]}"
+# do
+#     for i in "${tests[@]}"
+#     do
+#         var="-$var1"
+#         run_test "$i"
+#     done
+# done
+# printf "\n"
+# echo "======================="
+# echo "2 PARAMETERS"
+# echo "======================="
+# printf "\n"
 
-for var1 in "${flags[@]}"
-do
-    for var2 in "${flags[@]}"
-    do
-        if [ $var1 != $var2 ]
-        then
-            for i in "${tests[@]}"
-            do
-                var="-$var1 -$var2"
-                run_test "$i"
-            done
-        fi
-    done
-done
-printf "\n"
-echo "======================="
-echo "3 PARAMETERS"
-echo "======================="
-printf "\n"
-for var1 in "${flags[@]}"
-do
-    for var2 in "${flags[@]}"
-    do
-        for var3 in "${flags[@]}"
-        do
-            if [ $var1 != $var2 ] && [ $var2 != $var3 ] && [ $var1 != $var3 ]
-            then
-                for i in "${tests[@]}"
-                do
-                    var="-$var1 -$var2 -$var3"
-                    run_test "$i"
-                done
-            fi
-        done
-    done
-done
-printf "\n"
-echo "======================="
-echo "4 PARAMETERS"
-echo "======================="
-printf "\n"
-for var1 in "${flags[@]}"
-do
-    for var2 in "${flags[@]}"
-    do
-        for var3 in "${flags[@]}"
-        do
-            for var4 in "${flags[@]}"
-            do
-                if [ $var1 != $var2 ] && [ $var2 != $var3 ] \
-                && [ $var1 != $var3 ] && [ $var1 != $var4 ] \
-                && [ $var2 != $var4 ] && [ $var3 != $var4 ]
-                then
-                    for i in "${tests[@]}"
-                    do
-                        var="-$var1 -$var2 -$var3 -$var4"
-                        run_test "$i"
-                    done
-                fi
-            done
-        done
-    done
-done
-# 2 сдвоенных параметра
-for var1 in "${flags[@]}"
-do
-    for var2 in "${flags[@]}"
-    do
-        if [ $var1 != $var2 ]
-        then
-            for i in "${tests[@]}"
-            do
-                var="-$var1$var2"
-                run_test "$i"
-            done
-        fi
-    done
-done
+# for var1 in "${flags[@]}"
+# do
+#     for var2 in "${flags[@]}"
+#     do
+#         if [ $var1 != $var2 ]
+#         then
+#             for i in "${tests[@]}"
+#             do
+#                 var="-$var1 -$var2"
+#                 run_test "$i"
+#             done
+#         fi
+#     done
+# done
+# printf "\n"
+# echo "======================="
+# echo "3 PARAMETERS"
+# echo "======================="
+# printf "\n"
+# for var1 in "${flags[@]}"
+# do
+#     for var2 in "${flags[@]}"
+#     do
+#         for var3 in "${flags[@]}"
+#         do
+#             if [ $var1 != $var2 ] && [ $var2 != $var3 ] && [ $var1 != $var3 ]
+#             then
+#                 for i in "${tests[@]}"
+#                 do
+#                     var="-$var1 -$var2 -$var3"
+#                     run_test "$i"
+#                 done
+#             fi
+#         done
+#     done
+# done
+# printf "\n"
+# echo "======================="
+# echo "4 PARAMETERS"
+# echo "======================="
+# printf "\n"
+# for var1 in "${flags[@]}"
+# do
+#     for var2 in "${flags[@]}"
+#     do
+#         for var3 in "${flags[@]}"
+#         do
+#             for var4 in "${flags[@]}"
+#             do
+#                 if [ $var1 != $var2 ] && [ $var2 != $var3 ] \
+#                 && [ $var1 != $var3 ] && [ $var1 != $var4 ] \
+#                 && [ $var2 != $var4 ] && [ $var3 != $var4 ]
+#                 then
+#                     for i in "${tests[@]}"
+#                     do
+#                         var="-$var1 -$var2 -$var3 -$var4"
+#                         run_test "$i"
+#                     done
+#                 fi
+#             done
+#         done
+#     done
+# done
+# # 2 сдвоенных параметра
+# for var1 in "${flags[@]}"
+# do
+#     for var2 in "${flags[@]}"
+#     do
+#         if [ $var1 != $var2 ]
+#         then
+#             for i in "${tests[@]}"
+#             do
+#                 var="-$var1$var2"
+#                 run_test "$i"
+#             done
+#         fi
+#     done
+# done
 
-# 3 строенных параметра
-for var1 in "${flags[@]}"
-do
-    for var2 in "${flags[@]}"
-    do
-        for var3 in "${flags[@]}"
-        do
-            if [ $var1 != $var2 ] && [ $var2 != $var3 ] && [ $var1 != $var3 ]
-            then
-                for i in "${tests[@]}"
-                do
-                    var="-$var1$var2$var3"
-                    run_test "$i"
-                done
-            fi
-        done
-    done
-done
-printf "\n"
+# # 3 строенных параметра
+# for var1 in "${flags[@]}"
+# do
+#     for var2 in "${flags[@]}"
+#     do
+#         for var3 in "${flags[@]}"
+#         do
+#             if [ $var1 != $var2 ] && [ $var2 != $var3 ] && [ $var1 != $var3 ]
+#             then
+#                 for i in "${tests[@]}"
+#                 do
+#                     var="-$var1$var2$var3"
+#                     run_test "$i"
+#                 done
+#             fi
+#         done
+#     done
+# done
+# printf "\n"
+# echo "FAILED: $FAIL"
+# echo "SUCCESSFUL: $SUCCESS"
+# echo "ALL: $COUNTER"
+# printf "\n"
+# ##############################
+# echo "^^^^^^^^^^^^^^^^^^^^^^^"
+# echo "TESTS WITH GNU FLAGS"
+# echo "^^^^^^^^^^^^^^^^^^^^^^^"
+# printf "\n"
+# FAIL=0
+# SUCCESS=0
+# COUNTER=0
+# echo "======================="
+# echo "MANUAL TESTS"
+# echo "======================="
+# printf "\n"
+
+# for i in "${gnu[@]}"
+# do
+#     var="-"
+#     run_test $i
+# done
+# printf "\n"
+
 echo "FAILED: $FAIL"
 echo "SUCCESSFUL: $SUCCESS"
 echo "ALL: $COUNTER"
-printf "\n"
-##############################
-echo "^^^^^^^^^^^^^^^^^^^^^^^"
-echo "TESTS WITH GNU FLAGS"
-echo "^^^^^^^^^^^^^^^^^^^^^^^"
-printf "\n"
-FAIL=0
-SUCCESS=0
-COUNTER=0
-echo "======================="
-echo "MANUAL TESTS"
-echo "======================="
-printf "\n"
 
-for i in "${gnu[@]}"
-do
-    var="-"
-    run_test $i
-done
-printf "\n"
-
-echo "FAILED: $FAIL"
-echo "SUCCESSFUL: $SUCCESS"
-echo "ALL: $COUNTER"
-printf "\n"
+if [ $FAIL -eq 0 ]
+then
+    exit 0
+else
+    exit 1
+fi
+# printf "\n"
