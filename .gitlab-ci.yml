@@ -16,4 +16,4 @@ build_job:
 style_job:
   stage: style
   script:
-    - clang-format -n -style=Google -Werror src/part2/cat/*.h src/part2/cat/*.c src/part2/grep/*.h src/part2/grep/*.c
+    - clang-format -n -style=Google -Werror src/part2/cat/*.c src/part2/grep/*.h src/part2/grep/*.c
