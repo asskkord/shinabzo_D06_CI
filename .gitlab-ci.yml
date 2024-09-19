@@ -1,5 +1,6 @@
 stages:
   - build
+  - style
 
 build_job:
   stage: build
@@ -11,3 +12,8 @@ build_job:
       - src/part2/cat/
       - src/part2/grep/
     expire_in: 30 days
+
+style_job:
+  stage: style
+  script:
+    - clang-format -n -style=Google -Werror /src/part2/cat/*.h /src/part2/cat/*.c /src/part2/grep/*.h /src/part2/grep/*.c
