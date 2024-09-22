@@ -11,8 +11,7 @@ build_job:
     - cd grep/ && make && cd ../../..
   artifacts:
     paths:
-      - src/part2/cat/
-      - src/part2/grep/
+      - src/part2/
     expire_in: 30 days
 
 style_job:
