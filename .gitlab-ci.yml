@@ -2,6 +2,7 @@ stages:
   - build
   - style
   - test
+  - deploy
 
 build_job:
   stage: build
@@ -24,3 +25,9 @@ test_job:
   script:
     - cd src/part2/cat/ && make test && cd ..
     - cd grep/ && make test
+
+deploy_job:
+  stage: deploy
+  script:
+    - ./src/ssh.sh
+  when: manual
