@@ -29,6 +29,6 @@ test_job:
 deploy_job:
   stage: deploy
   script:
-    - ssh-keyscan -H 10.10.0.2 >> ~/.ssh/known_hosts
+    - ssh-keyscan -H 10.10.0.2 >> /home/shinabzo/.ssh/known_hosts
     - ./src/ssh.sh
   when: manual
