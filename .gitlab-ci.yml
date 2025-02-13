@@ -1,0 +1,32 @@
+stages:
+  - build
+  - style
+  - test
+  - deploy
+
+build_job:
+  stage: build
+  script:
+    - cd src/part2/cat/ && make && cd ..
+    - cd grep/ && make && cd ../../..
+  artifacts:
+    paths:
+      - src/part2/
+    expire_in: 30 days
+
+style_job:
+  stage: style
+  script:
+    - clang-format -n -style=Google -Werror src/part2/cat/*.c src/part2/grep/*.h src/part2/grep/*.c
+
+test_job:
+  stage: test
+  script:
+    - cd src/part2/cat/ && make test && cd ..
+    - cd grep/ && make test
+
+deploy_job:
+  stage: deploy
+  script:
+    - ./src/ssh.sh
+  when: manual
